@@ -1,0 +1,7 @@
+.day__p {
+  padding: 3px;
+  border-radius: 20px;
+}
+.day__p:hover {
+  cursor: pointer;
+}/*# sourceMappingURL=DaysOfWeek.module.css.map */
