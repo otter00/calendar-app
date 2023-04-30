@@ -75,16 +75,8 @@ export default function DaysOfWeek(props) {
                         checked={day.checked}
                         ></Date>
                         )}
-                {/* <p className={DaysStyles.day__p}>25</p>
-                <p className={DaysStyles.day__p}>26</p>
-                <p className={DaysStyles.day__p}>27</p>
-                <p className={DaysStyles.day__p}>28</p> */}
-                {/* We can check the 29th of march as the example says */}
-                {/* <p onClick={handleClick} className={isActive? DaysStyles.day__checked : DaysStyles.day__p}>29</p>
-                <p className={DaysStyles.day__p}>30</p>
-                <p className={DaysStyles.day__p}>31</p> */}
-
             </Days>
+            
             <Month />
         </DaysWrapper>
     )
