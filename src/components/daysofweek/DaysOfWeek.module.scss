@@ -7,3 +7,14 @@
         cursor: pointer;
     }
 }
+
+.day__checked {
+    padding: 3px;
+    //border: 1px solid black;
+    border-radius: 20px;
+    background-color: red;
+
+    &:hover {
+        cursor: pointer;
+    }
+}

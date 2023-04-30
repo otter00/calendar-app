@@ -4,4 +4,13 @@
 }
 .day__p:hover {
   cursor: pointer;
+}
+
+.day__checked {
+  padding: 3px;
+  border-radius: 20px;
+  background-color: red;
+}
+.day__checked:hover {
+  cursor: pointer;
 }/*# sourceMappingURL=DaysOfWeek.module.css.map */

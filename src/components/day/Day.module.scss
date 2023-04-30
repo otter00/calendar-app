@@ -1,0 +1,9 @@
+.day__p {
+    padding: 3px;
+    //border: 1px solid black;
+    border-radius: 20px;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
