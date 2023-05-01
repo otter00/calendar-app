@@ -7,7 +7,7 @@ import Footer from './components/footer/Footer';
 const AppWrapper = styled.div`
   display: block;
   margin: auto;
-  width: 100vw;
+  width: 740px;
   height: 100%;
 
   border: 1px solid black;
