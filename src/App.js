@@ -4,6 +4,9 @@ import Header from './components/header/Header';
 import DaysOfWeek from './components/daysofweek/DaysOfWeek';
 import Footer from './components/footer/Footer';
 
+import PopUpsGallery from './components/popup/PopUpsGallery';
+import { createGlobalStyle } from 'styled-components'
+
 const AppWrapper = styled.div`
   display: block;
   margin: auto;

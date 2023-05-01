@@ -1,5 +1,8 @@
 import React from "react";
 import styled from 'styled-components';
+//import Popup from '../popup/reactPopup';
+import Popup from 'reactjs-popup';
+import 'reactjs-popup/dist/index.css';
 
 const HeaderWrapper = styled.div`
   display: flex;
@@ -23,7 +26,10 @@ export default function Header(props) {
     return(
         <HeaderWrapper>
             <HeaderSpan>Interview Calendar</HeaderSpan>
-            <HeaderAddSign>+</HeaderAddSign>
+            <Popup trigger={<HeaderAddSign>+</HeaderAddSign>} position="right center">
+    <div>Popup</div>
+  </Popup>
+            
         </HeaderWrapper>
     )
 }
