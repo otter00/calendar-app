@@ -2,15 +2,18 @@ import React from "react";
 import styled from 'styled-components';
 
 import MothStyles from './Month.module.scss';
+import classnames from "classnames";
+import * as calendar from './Calendar';
+
+//let style = cn([`${MothStyles.day__center}`, `${"day"}`]);
 
 const MonthWrapper = styled.div`
     background-color: #e8e8e8;
-    padding: 0px 50px;
+    padding: 15px 50px;
     display: flex;
     justify-content: space-around;
     font-weight: 600;
     align-items: center;
-    margin-top: 7px;
 `
 
 const MonthName = styled.select`
@@ -27,10 +30,19 @@ const Year = styled.select`
     background-color: #e8e8e8;
 `
 
+const DaysTable = styled.table`
+background-color: white;
+margin: auto;
+display: flex;
+flex-direction: column;
+`
+const Tbody = styled.tbody`
+//height: 520px;
+`
 export default class Month extends React.Component {
     static defaultProps = {
         date: new Date(),
-        years: [2018, 2019, 2020],
+        years: [2019, 2020, 2021, 2022, 2023],
         monthNames: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
         weekDays: [ 'M', 'T', 'W', 'T', 'F', 'S', 'S'],
         onChange: Function.prototype
@@ -64,7 +76,13 @@ export default class Month extends React.Component {
         this.setState({date});
     };
 
-    handleChange = ()=>{};
+    handleChange = ()=>{
+        const year = this.yearSelect.value;
+        const month = this.monthSelect.value;
+
+        const date = new Date(year, month);
+        this.setState({date});
+    };
 
     handleDayClick = date => {
         this.setState({selectedDate: date});
@@ -74,53 +92,68 @@ export default class Month extends React.Component {
 
     render() {
         const {years, monthNames, weekDays} = this.props;
-    
-        const monthDayDate = [
-            [undefined, undefined, new Date(), new Date(), new Date(), new Date(), new Date()],
-            [new Date(), new Date(), new Date(), new Date(), new Date(), new Date(), new Date()],
-            [new Date(), new Date(), new Date(), new Date(), new Date(), new Date(), new Date()],
-            [new Date(), new Date(), new Date(), new Date(), new Date(), new Date(), new Date()],
-            [new Date(), new Date(), new Date(), new Date(), undefined, undefined, undefined]
-        ];{}
+        const { currentDate, selectedDate } = this.state;
+
+        const monthDayDate = calendar.getMonthData(this.year, this.month);
     
         return(
         <>
-            <MonthWrapper>
+        <DaysTable>
+                {/* <thead>
+                    <tr className={MothStyles.days__center}>
+                        {weekDays.map(name =>
+                            <th key={name}>{name}</th>)}
+                    </tr>
+                </thead> */}
+
+                <MonthWrapper>
                 <button 
                 onClick={this.handlePrevMonth}
                 className={MothStyles.month__p}>{'<'}</button>
-                <MonthName>
+                <MonthName
+                ref={element => this.monthSelect = element}
+                defaultValue={this.month}
+                onChange={this.handleChange}
+                >
                     {monthNames.map((name, index) =>
                     <option key={name} value={index}>{name}</option>
                     )}
                 </MonthName>
-                <Year>
+
+                <Year
+                ref={element => this.yearSelect = element}
+                defaultValue={this.year}
+                onChange={this.handleChange}
+                >
                     {years.map(year =>
                         <option key={year} value={year}>{year}</option>
                         )}
                 </Year>
+
                 <button 
                 onClick={this.handleNextMonth}
                 className={MothStyles.month__p}>{'>'}</button>
             </MonthWrapper>
 
-            <table>
-                <tbody>
+                <Tbody>
                         {monthDayDate.map((week, index) => 
-                        <tr key={index} className="week">
+                        <tr key={index}>
                             {
                                 week.map((date, index) => date ?
                                 <td 
                                 key={index} 
-                                className="day"
+                                className={classnames({
+                                    'today': calendar.areEqual(date, currentDate),
+                                    'selected': calendar.areEqual(date, selectedDate)
+                                })}
                                 onClick={()=> this.handleDayClick}
                                 >{date.getDate()}</td>
                                 :
                                 <td key={index}></td>)
                             }
                         </tr>)}
-                </tbody>
-            </table>
+                </Tbody>
+            </DaysTable>
         </>
     )
     }

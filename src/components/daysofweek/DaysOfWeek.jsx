@@ -9,31 +9,31 @@ let checked;
 
 const days = [{
     id: 1,
-    date: 25,
+    date: 'M',
     checked: checked = cn([`${DaysStyles.day__checked}`])
 }, {
     id: 2,
-    date: 26,
+    date: 'T',
     checked: checked = cn([`${DaysStyles.day__checked}`])
 }, {
     id: 3, 
-    date: 27,
+    date: 'W',
     checked: checked = cn([`${DaysStyles.day__checked}`])
 }, {
     id: 4,
-    date: 28,
+    date: 'T',
     checked: checked = cn([`${DaysStyles.day__checked}`])
 }, {
     id: 5,
-    date: 29,
+    date: 'F',
     checked: checked = cn([`${DaysStyles.day__checked}`])
 }, {
     id: 6, 
-    date: 30,
+    date: 'S',
     checked: checked = cn([`${DaysStyles.day__checked}`])
 }, {
     id: 7, 
-    date: 31,
+    date: 'S',
     checked: checked = cn([`${DaysStyles.day__checked}`])
 }];
 
@@ -44,20 +44,24 @@ const DaysWrapper = styled.div`
     font-weight: 600;
 `
 const WeekDays = styled.div`
+    background-color: #e8e8e8;
     display: flex;
     justify-content: space-around;
     font-size: 12px;
 `
 const Days = styled.div`
     display: flex;
+    font-weight: 800;
+    font-size: 12px;
     justify-content: space-around;
+    background-color: #e8e8e8;
 `
 
 export default function DaysOfWeek(props) {
 
     return (
         <DaysWrapper>
-            <WeekDays>
+            {/* <WeekDays>
                 <p>M</p>
                 <p>T</p>
                 <p>W</p>
@@ -65,7 +69,7 @@ export default function DaysOfWeek(props) {
                 <p>F</p>
                 <p>S</p>
                 <p>S</p>
-            </WeekDays>
+            </WeekDays> */}
 
             <Days> {
                         days.map((day, id) =>

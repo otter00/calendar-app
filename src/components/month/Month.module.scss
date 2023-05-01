@@ -16,3 +16,21 @@ option {
     border: none;
     background-color: rgba($color: #000000, $alpha: 0.0);
 }
+
+.days__center {
+    display: flex;
+    justify-content: space-around;
+    background-color: #e8e8e8;
+    padding-bottom: 7px;
+    font-size: 12px;
+}
+
+td {
+    width: 17em;
+    text-align: center;
+    border: 1px solid lightgray;
+
+    &:hover {
+        background-color: #8c5e9f;
+    }
+}
